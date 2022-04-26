@@ -119,10 +119,10 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
      onEachFeature: function(feature, layer) {
       layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
     }
-  }).addTo(allEarthquakes);
+  }).addTo(totalEarthquakes);
 
   // Next, add the earthquake layer to the map.
-  allEarthquakes.addTo(map);
+  totalEarthquakes.addTo(map);
 
   // Retrieve the major earthquake GeoJSON data greater than 4.5 magnitude for the past 7 days
 d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson").then(function(data) {
