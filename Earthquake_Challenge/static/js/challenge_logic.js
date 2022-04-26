@@ -104,16 +104,20 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
       		console.log(data);
       		return L.circleMarker(latlng);
         },
+
+  // Use d3.json to create a call to retrieve our Tectonic Plate geoJSON data.
+  d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json").then(function(data) {
+	  
       // Then, set the style for each Circle Marker using the styleInfo function.
-      L.geoJson(data, {
-        style: styleInfo,
-        onEachFeature: function(feature, layer) {
-          console.log(feature);
-        }
-      }).addTo(tectonicPlates);
-    });
-    tectonicPlates.addTo(map);
+    L.geoJson(data, {
+      style: styleInfo,
+      onEachFeature: function(feature, layer) {
+        console.log(feature);
+      }
+    }).addTo(tectonicPlates);
   });
+  tectonicPlates.addTo(map);
+});
 
      // Next, create a pop-up display for each Circle Marker that displays the magnitude & location of each earthquake after the marker is created and styled.
      onEachFeature: function(feature, layer) {
